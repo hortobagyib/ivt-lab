@@ -1,12 +1,12 @@
 name: Build
 on:
   push:
-    branches:
-      - master
+    branches: [ main ]
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [ main ]
 jobs:
   build:
+  
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+          distribution: 'temurin'
+          cache: maven
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
